@@ -6,13 +6,13 @@
     <title>Interactive Automation Plan: Internet Speed Monitor</title>
     
     <!-- Chosen Palette: Calm Harmony -->
-    <!-- Application Structure Plan: A single-page, vertical-scrolling layout that transforms the markdown plan into a dynamic presentation. The structure uses interactive cards for each of the three main phases (Build, Deploy, Present). This design was chosen to make a technical plan easily digestible for a managerial audience. It replaces dense text with visual diagrams, interactive elements, and a simulated dashboard to clearly communicate the process, the technology involved, and the valuable final output, enhancing comprehension and engagement. -->
+    <!-- Application Structure Plan: A single-page, vertical-scrolling layout that transforms the markdown plan into a dynamic presentation. The structure uses interactive cards for each of the three main phases (Build, Deploy, Present). This design was chosen to make a technical plan easily digestible for a managerial audience. It replaces dense text with visual diagrams, interactive elements, a simulated dashboard, and a new feature for data usage monitoring to clearly communicate the process, the technology involved, and the valuable final output, enhancing comprehension and engagement. -->
     <!-- Visualization & Content Choices: 
         - Executive Summary -> Goal: Inform -> Styled Text Block -> Static -> Provides a clear, high-level introduction for stakeholders.
         - Overall Process -> Goal: Organize -> HTML/CSS Diagram -> Static -> Visually breaks down the end-to-end flow from robot to report, making it easier to grasp than a list.
-        - Phase 1 (Build) -> Goal: Organize -> Interactive HTML/CSS Step Diagram -> Click to reveal details -> Simplifies the technical steps of robot creation into a clean, interactive flow.
-        - Phase 2 (Deploy) -> Goal: Inform -> Icon-based Feature List -> Static cards -> Uses universally understood icons to quickly convey the key technical features of the deployment phase.
-        - Phase 3 (Data Presentation) -> Goal: Compare/Change -> Interactive Chart.js Line Chart -> Filter buttons -> Simulates the final dashboard, demonstrating the tangible value and data analysis capabilities of the project. Library/Method: Chart.js/Canvas. -->
+        - Phase 1 (Build) -> Goal: Organize -> Interactive HTML/CSS Step Diagram -> Click to reveal details -> Simplifies the technical steps of robot creation into a clean, interactive flow. A new section was added to show the steps for data usage monitoring from provider portals.
+        - Phase 2 (Deploy) -> Goal: Inform -> Icon-based Feature List -> Static cards -> Uses universally understood icons to quickly convey the key technical features of the deployment phase. A new card was added to detail data usage monitoring for internet provider portals.
+        - Phase 3 (Data Presentation) -> Goal: Compare/Change -> Interactive Chart.js Line Chart -> Filter buttons and a data-type toggle -> Simulates the final dashboard, demonstrating the tangible value and data analysis capabilities of the project for both speed and data usage. Library/Method: Chart.js/Canvas. -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -21,14 +21,14 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f8fafc; /* slate-50 */
+            background-color: #f8fafc;
         }
         .phase-card {
             background-color: white;
-            border-radius: 1.5rem; /* rounded-3xl */
+            border-radius: 1.5rem;
             padding: 2rem;
             box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.05), 0 4px 6px -4px rgb(0 0 0 / 0.05);
-            border: 1px solid #e2e8f0; /* slate-200 */
+            border: 1px solid #e2e8f0;
             transition: all 0.3s ease-in-out;
         }
         @media (min-width: 768px) {
@@ -42,11 +42,11 @@
             transition: all 0.2s ease-in-out;
         }
         .step-item.active {
-            background-color: #eff6ff; /* blue-50 */
-            border-color: #3b82f6; /* blue-500 */
+            background-color: #eff6ff;
+            border-color: #3b82f6;
         }
         .step-item.active .step-icon {
-            background-color: #3b82f6; /* blue-500 */
+            background-color: #3b82f6;
             color: white;
         }
         .step-details {
@@ -55,7 +55,7 @@
             transition: max-height 0.5s ease-in-out;
         }
         .step-item.active + .step-details {
-            max-height: 200px; /* Adjust as needed */
+            max-height: 200px;
         }
         .chart-container {
             position: relative;
@@ -80,19 +80,16 @@
 
     <div class="container mx-auto px-4 py-12 max-w-5xl">
 
-        <!-- Header Section -->
         <header class="text-center mb-16">
             <h1 class="text-4xl md:text-5xl font-bold text-slate-800 mb-4">Internet Speed Test Automation Plan</h1>
             <p class="text-lg text-slate-600 max-w-3xl mx-auto">An interactive overview of our plan to automate network performance monitoring using UiPath, providing reliable, real-time insights.</p>
         </header>
 
-        <!-- Executive Summary Card -->
         <div class="phase-card mb-12">
             <h2 class="text-2xl font-semibold text-slate-800 mb-4">Executive Summary</h2>
-            <p class="text-slate-600">This plan outlines the implementation of an automated agent using the UiPath platform to monitor internet speed from multiple locations. The agent will run on a scheduled basis, collect data, and automatically save it to a central Google Sheet. This will provide a consistent, reliable, and real-time view of our network performance without manual intervention, enabling proactive management and troubleshooting.</p>
+            <p class="text-slate-600">This plan outlines the implementation of an automated agent using the UiPath platform to monitor internet speed and data usage from multiple locations. The agent will run on a scheduled basis, collect data, and automatically save it to a central Google Sheet. This will provide a consistent, reliable, and real-time view of our network performance without manual intervention, enabling proactive management and troubleshooting.</p>
         </div>
 
-        <!-- Overall Process Flow -->
         <div class="mb-16">
             <h2 class="text-3xl font-bold text-center text-slate-800 mb-8">The Automation Flow</h2>
             <div class="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-4 text-center">
@@ -124,17 +121,14 @@
             </div>
         </div>
 
-        <!-- Phases Section -->
         <div class="space-y-12">
 
-            <!-- Phase 1: Building the Automation -->
             <div id="phase1" class="phase-card">
                 <h3 class="text-xl font-semibold text-blue-600 mb-2">Phase 1: Build the Automation</h3>
                 <h2 class="text-3xl font-bold text-slate-800 mb-6">Developing the Robot in UiPath Studio</h2>
-                <p class="mb-8 text-slate-600">The core automation is built using a visual, low-code interface. This creates a reusable process that performs the speed test. Click each step below to see the details.</p>
+                <p class="mb-8 text-slate-600">The core automation is built using a visual, low-code interface. This creates a reusable process that performs the speed test and checks data usage. Click each step below to see the details.</p>
                 
                 <div id="build-steps">
-                    <!-- Step 1 -->
                     <div class="step-item border-2 border-slate-200 rounded-lg p-4 flex items-center space-x-4 active">
                         <div class="step-icon flex-shrink-0 bg-slate-200 text-slate-600 rounded-full h-10 w-10 flex items-center justify-center font-bold text-lg">1</div>
                         <div class="font-semibold text-slate-800">Open Speed Test Site</div>
@@ -143,36 +137,40 @@
                         <p>The automation will open a web browser and navigate to a reliable internet speed test website.</p>
                     </div>
 
-                    <!-- Step 2 -->
                     <div class="step-item border-2 border-slate-200 rounded-lg p-4 mt-2 flex items-center space-x-4">
                          <div class="step-icon flex-shrink-0 bg-slate-200 text-slate-600 rounded-full h-10 w-10 flex items-center justify-center font-bold text-lg">2</div>
-                        <div class="font-semibold text-slate-800">Run the Test</div>
+                        <div class="font-semibold text-slate-800">Run the Speed Test</div>
                     </div>
                      <div class="step-details px-4 py-2 text-slate-600">
                         <p>It will use UI automation to interact with the webpage, clicking the "Go" or "Start" button to initiate the test.</p>
                     </div>
 
-                    <!-- Step 3 -->
                     <div class="step-item border-2 border-slate-200 rounded-lg p-4 mt-2 flex items-center space-x-4">
                          <div class="step-icon flex-shrink-0 bg-slate-200 text-slate-600 rounded-full h-10 w-10 flex items-center justify-center font-bold text-lg">3</div>
-                        <div class="font-semibold text-slate-800">Extract Data</div>
+                        <div class="font-semibold text-slate-800">Securely Log In to Provider Portal</div>
                     </div>
                      <div class="step-details px-4 py-2 text-slate-600">
-                        <p>Once the test is complete, the robot will use data scraping techniques to capture the key metrics: download and upload speed.</p>
+                        <p>The robot will securely retrieve login credentials from UiPath Orchestrator and use UI automation to log into the internet provider portal (e.g., Airtel, Jio).</p>
                     </div>
 
-                    <!-- Step 4 -->
                     <div class="step-item border-2 border-slate-200 rounded-lg p-4 mt-2 flex items-center space-x-4">
                          <div class="step-icon flex-shrink-0 bg-slate-200 text-slate-600 rounded-full h-10 w-10 flex items-center justify-center font-bold text-lg">4</div>
+                        <div class="font-semibold text-slate-800">Extract Data Usage</div>
+                    </div>
+                     <div class="step-details px-4 py-2 text-slate-600">
+                        <p>It will navigate to the data usage section of the portal and scrape key metrics like available data limit and current usage.</p>
+                    </div>
+                    
+                    <div class="step-item border-2 border-slate-200 rounded-lg p-4 mt-2 flex items-center space-x-4">
+                         <div class="step-icon flex-shrink-0 bg-slate-200 text-slate-600 rounded-full h-10 w-10 flex items-center justify-center font-bold text-lg">5</div>
                         <div class="font-semibold text-slate-800">Log Data to Google Sheets</div>
                     </div>
                      <div class="step-details px-4 py-2 text-slate-600">
-                        <p>The extracted speed data, along with a timestamp and the specific location ID, will be written to a designated Google Sheet.</p>
+                        <p>All extracted data will be logged with a timestamp and location ID into a designated Google Sheet for centralized analysis.</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Phase 2: Deploying and Running the Agent -->
             <div id="phase2" class="phase-card">
                 <h3 class="text-xl font-semibold text-blue-600 mb-2">Phase 2: Deploy and Run the Agent</h3>
                 <h2 class="text-3xl font-bold text-slate-800 mb-6">Centralized Management with UiPath Orchestrator</h2>
@@ -198,17 +196,26 @@
                         <h4 class="font-semibold text-slate-800 text-lg mb-1">Downtime Handling</h4>
                         <p class="text-slate-600 text-sm">If a machine is off, Orchestrator logs the job as "Pending" and runs it when the machine is back online, providing a full audit trail.</p>
                     </div>
+                    <div class="bg-slate-50 p-6 rounded-xl border border-slate-200">
+                         <div class="text-3xl mb-3">📶</div>
+                        <h4 class="font-semibold text-slate-800 text-lg mb-1">Data Usage Monitoring</h4>
+                        <p class="text-slate-600 text-sm">The agent can be configured to log in to internet provider portals (e.g., Airtel, Jio) using provided credentials to retrieve and log available data limits and current usage.</p>
+                    </div>
                 </div>
             </div>
 
-            <!-- Phase 3: Data Presentation and Analysis -->
             <div id="phase3" class="phase-card">
                 <h3 class="text-xl font-semibold text-blue-600 mb-2">Phase 3: Data Presentation and Analysis</h3>
                 <h2 class="text-3xl font-bold text-slate-800 mb-6">Visualizing Performance in Real-Time</h2>
                 <p class="mb-8 text-slate-600">The final output is a clean, consistent data set in Google Sheets, which can be used to create live dashboards for monitoring network performance, identifying trends, and making data-driven decisions. Below is a simulation of the live dashboard.</p>
                 
                 <div class="flex flex-wrap justify-center space-x-2 space-y-2 md:space-y-0 mb-4">
-                    <button id="filter-all" class="bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-medium">All Locations</button>
+                    <button id="toggle-speed" class="bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-medium">Internet Speed (Mbps)</button>
+                    <button id="toggle-usage" class="bg-slate-200 text-slate-700 px-4 py-2 rounded-full text-sm font-medium">Data Usage (GB)</button>
+                </div>
+
+                <div class="flex flex-wrap justify-center space-x-2 space-y-2 md:space-y-0 mb-4">
+                    <button id="filter-all" class="bg-slate-200 text-slate-700 px-4 py-2 rounded-full text-sm font-medium">All Locations</button>
                     <button id="filter-a" class="bg-slate-200 text-slate-700 px-4 py-2 rounded-full text-sm font-medium">Location A</button>
                     <button id="filter-b" class="bg-slate-200 text-slate-700 px-4 py-2 rounded-full text-sm font-medium">Location B</button>
                     <button id="filter-c" class="bg-slate-200 text-slate-700 px-4 py-2 rounded-full text-sm font-medium">Location C</button>
@@ -224,111 +231,124 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // --- Phase 1: Interactive Steps ---
             const stepItems = document.querySelectorAll('.step-item');
             stepItems.forEach(item => {
                 item.addEventListener('click', () => {
-                    // Remove active class from all items
                     stepItems.forEach(i => i.classList.remove('active'));
-                    // Add active class to clicked item
                     item.classList.add('active');
                 });
             });
 
-            // --- Phase 3: Chart.js Dashboard Simulation ---
             const ctx = document.getElementById('speedChart').getContext('2d');
             
-            // Mock Data
             const labels = ['9 AM', '10 AM', '11 AM', '12 PM', '1 PM', '2 PM', '3 PM'];
-            const locationA_Data = [85, 92, 78, 95, 88, 90, 93];
-            const locationB_Data = [95, 90, 98, 92, 99, 94, 96];
-            const locationC_Data = [70, 65, 72, 68, 75, 71, 74];
+            const speedData = {
+                'a': [85, 92, 78, 95, 88, 90, 93],
+                'b': [95, 90, 98, 92, 99, 94, 96],
+                'c': [70, 65, 72, 68, 75, 71, 74]
+            };
+            const usageData = {
+                'a': [250, 245, 240, 230, 225, 220, 215],
+                'b': [450, 440, 435, 420, 410, 400, 395],
+                'c': [150, 148, 146, 142, 138, 135, 132]
+            };
 
-            const datasets = [
-                {
-                    label: 'Location A',
-                    data: locationA_Data,
-                    borderColor: 'rgb(59, 130, 246)',
-                    backgroundColor: 'rgba(59, 130, 246, 0.1)',
-                    fill: true,
-                    tension: 0.4,
-                },
-                {
-                    label: 'Location B',
-                    data: locationB_Data,
-                    borderColor: 'rgb(16, 185, 129)',
-                    backgroundColor: 'rgba(16, 185, 129, 0.1)',
-                    fill: true,
-                    tension: 0.4,
-                },
-                {
-                    label: 'Location C',
-                    data: locationC_Data,
-                    borderColor: 'rgb(249, 115, 22)',
-                    backgroundColor: 'rgba(249, 115, 22, 0.1)',
-                    fill: true,
-                    tension: 0.4,
-                }
+            let currentDataType = 'speed';
+
+            const speedDatasets = [
+                { label: 'Location A', data: speedData.a, borderColor: 'rgb(59, 130, 246)', backgroundColor: 'rgba(59, 130, 246, 0.1)', fill: true, tension: 0.4 },
+                { label: 'Location B', data: speedData.b, borderColor: 'rgb(16, 185, 129)', backgroundColor: 'rgba(16, 185, 129, 0.1)', fill: true, tension: 0.4 },
+                { label: 'Location C', data: speedData.c, borderColor: 'rgb(249, 115, 22)', backgroundColor: 'rgba(249, 115, 22, 0.1)', fill: true, tension: 0.4 }
+            ];
+
+            const usageDatasets = [
+                { label: 'Location A', data: usageData.a, borderColor: 'rgb(59, 130, 246)', backgroundColor: 'rgba(59, 130, 246, 0.1)', fill: true, tension: 0.4 },
+                { label: 'Location B', data: usageData.b, borderColor: 'rgb(16, 185, 129)', backgroundColor: 'rgba(16, 185, 129, 0.1)', fill: true, tension: 0.4 },
+                { label: 'Location C', data: usageData.c, borderColor: 'rgb(249, 115, 22)', backgroundColor: 'rgba(249, 115, 22, 0.1)', fill: true, tension: 0.4 }
             ];
 
             const speedChart = new Chart(ctx, {
                 type: 'line',
-                data: {
-                    labels: labels,
-                    datasets: datasets
-                },
+                data: { labels: labels, datasets: speedDatasets },
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
                     scales: {
                         y: {
                             beginAtZero: false,
-                            title: {
-                                display: true,
-                                text: 'Download Speed (Mbps)'
-                            }
+                            title: { display: true, text: 'Download Speed (Mbps)' }
                         }
                     },
                     plugins: {
-                        legend: {
-                            position: 'top',
-                        },
-                        title: {
-                            display: true,
-                            text: 'Hourly Internet Speed by Location'
-                        }
+                        legend: { position: 'top' },
+                        title: { display: true, text: 'Hourly Internet Speed by Location' }
                     },
-                    interaction: {
-                        intersect: false,
-                        mode: 'index',
-                    },
+                    interaction: { intersect: false, mode: 'index' }
                 }
             });
 
-            // Filter functionality
-            const filterButtons = [
-                { id: 'filter-all', data: datasets },
-                { id: 'filter-a', data: [datasets[0]] },
-                { id: 'filter-b', data: [datasets[1]] },
-                { id: 'filter-c', data: [datasets[2]] }
-            ];
+            function updateChart(type, filter) {
+                let datasetsToUse = [];
+                let title = '';
+                let yAxisLabel = '';
+                let filterButtons = document.querySelectorAll('#phase3 .flex:last-of-type button');
             
-            const allButtons = document.querySelectorAll('.flex.justify-center button');
+                if (type === 'speed') {
+                    title = 'Hourly Internet Speed by Location';
+                    yAxisLabel = 'Download Speed (Mbps)';
+                    if (filter === 'all') datasetsToUse = speedDatasets;
+                    else datasetsToUse = speedDatasets.filter(ds => ds.label.includes(filter.toUpperCase()));
+                } else {
+                    title = 'Hourly Data Usage by Location';
+                    yAxisLabel = 'Available Data (GB)';
+                    if (filter === 'all') datasetsToUse = usageDatasets;
+                    else datasetsToUse = usageDatasets.filter(ds => ds.label.includes(filter.toUpperCase()));
+                }
+            
+                speedChart.data.datasets = datasetsToUse;
+                speedChart.options.plugins.title.text = title;
+                speedChart.options.scales.y.title.text = yAxisLabel;
+                speedChart.update();
 
-            filterButtons.forEach(btnConfig => {
-                const button = document.getElementById(btnConfig.id);
-                button.addEventListener('click', () => {
-                    speedChart.data.datasets = btnConfig.data;
-                    speedChart.update();
-                    
-                    allButtons.forEach(b => {
-                        b.classList.remove('bg-blue-600', 'text-white');
-                        b.classList.add('bg-slate-200', 'text-slate-700');
-                    });
-                    button.classList.add('bg-blue-600', 'text-white');
-                    button.classList.remove('bg-slate-200', 'text-slate-700');
+                filterButtons.forEach(b => {
+                    b.classList.remove('bg-blue-600', 'text-white');
+                    b.classList.add('bg-slate-200', 'text-slate-700');
                 });
+                document.getElementById(`filter-${filter}`).classList.add('bg-blue-600', 'text-white');
+                document.getElementById(`filter-${filter}`).classList.remove('bg-slate-200', 'text-slate-700');
+            }
+
+            const toggleSpeedBtn = document.getElementById('toggle-speed');
+            const toggleUsageBtn = document.getElementById('toggle-usage');
+            const filterAllBtn = document.getElementById('filter-all');
+            const filterA = document.getElementById('filter-a');
+            const filterB = document.getElementById('filter-b');
+            const filterC = document.getElementById('filter-c');
+
+            toggleSpeedBtn.addEventListener('click', () => {
+                currentDataType = 'speed';
+                toggleSpeedBtn.classList.add('bg-blue-600', 'text-white');
+                toggleSpeedBtn.classList.remove('bg-slate-200', 'text-slate-700');
+                toggleUsageBtn.classList.remove('bg-blue-600', 'text-white');
+                toggleUsageBtn.classList.add('bg-slate-200', 'text-slate-700');
+                updateChart('speed', 'all');
             });
+
+            toggleUsageBtn.addEventListener('click', () => {
+                currentDataType = 'usage';
+                toggleUsageBtn.classList.add('bg-blue-600', 'text-white');
+                toggleUsageBtn.classList.remove('bg-slate-200', 'text-slate-700');
+                toggleSpeedBtn.classList.remove('bg-blue-600', 'text-white');
+                toggleSpeedBtn.classList.add('bg-slate-200', 'text-slate-700');
+                updateChart('usage', 'all');
+            });
+            
+            filterAllBtn.addEventListener('click', () => updateChart(currentDataType, 'all'));
+            filterA.addEventListener('click', () => updateChart(currentDataType, 'a'));
+            filterB.addEventListener('click', () => updateChart(currentDataType, 'b'));
+            filterC.addEventListener('click', () => updateChart(currentDataType, 'c'));
+            
+            updateChart('speed', 'all');
         });
     </script>
 
